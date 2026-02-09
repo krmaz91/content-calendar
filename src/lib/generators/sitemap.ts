@@ -123,11 +123,10 @@ export function generateSitemap(
   const nodes = [...coreNodes, ...offerNodes, ...crawlNodes];
 
   const titles = nodes.map((n) => n.title);
-  nodes.forEach((node) => {
-    node.internalLinks = titles
-      .filter((title) => title !== node.title)
-      .slice(0, 4);
-  });
+  const nodesWithLinks = nodes.map((node) => ({
+    ...node,
+    internalLinks: titles.filter((title) => title !== node.title).slice(0, 4)
+  }));
 
-  return nodes;
+  return nodesWithLinks;
 }
