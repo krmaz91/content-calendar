@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { ensureProjectTable, prisma } from "@/lib/db";
 
 export async function GET(
   _req: Request,
   { params }: { params: { id: string } }
 ) {
+  await ensureProjectTable();
   const project = await prisma.project.findUnique({
     where: { id: params.id }
   });

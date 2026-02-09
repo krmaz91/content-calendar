@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { ensureProjectTable, prisma } from "@/lib/db";
 import { createProjectSchema } from "@/lib/validation";
 import { generateSitemap } from "@/lib/generators/sitemap";
 import { generateCalendar } from "@/lib/generators/calendar";
 import { ProjectData } from "@/lib/types";
 
 export async function GET() {
+  await ensureProjectTable();
   const projects = await prisma.project.findMany({
     orderBy: { createdAt: "desc" }
   });
@@ -22,6 +23,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
+    await ensureProjectTable();
     const body = await req.json();
     const parsed = createProjectSchema.parse(body);
     const crawl = body.crawl || undefined;
