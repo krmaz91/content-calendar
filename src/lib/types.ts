@@ -39,7 +39,7 @@ export type CalendarItem = {
   publishDate: string;
   title: string;
   contentType: ContentType;
-  outline: string[];
+  outline: ReadonlyArray<string>;
   targetKeyword: string;
   intent: string;
   funnelStage: FunnelStage;
