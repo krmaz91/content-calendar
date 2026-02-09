@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-ink-900 text-white font-body;
+}
+
+.bg-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 0),
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 22px 22px, 44px 44px;
+  background-position: 0 0, 8px 12px;
+}
+
+.card {
+  @apply bg-ink-800/80 border border-white/10 rounded-2xl shadow-lg;
+}
+
+.input {
+  @apply w-full bg-ink-700/70 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-electric-600;
+}
+
+.label {
+  @apply text-xs uppercase tracking-widest text-white/70;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full border border-white/10 px-2.5 py-1 text-xs text-white/70;
+}
+
+.table {
+  @apply w-full text-sm;
+}
+
+.table th {
+  @apply text-left text-white/70 font-semibold;
+}
+
+.table td {
+  @apply align-top py-2 pr-3;
+}
